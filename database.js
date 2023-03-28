@@ -3,6 +3,8 @@ const config = require('./config');
 
 const connection = mysql.createConnection(config.db);
 
+
+// Função para criar tabela
 function createTable(conn){
     const sql = `CREATE TABLE IF NOT EXISTS forms_answers(
                  Id serial NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -20,6 +22,7 @@ function createTable(conn){
     });
 }
 
+// Conexão ao banco de dados
 connection.connect((err) => {
     if(err) return console.log(err);
     console.log('Connected!');

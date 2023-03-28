@@ -6,29 +6,36 @@ const config = require('./config');
 
 app.use(express.json());
 
+// Rota inicial
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
+
+// Rota para ver todos os registros
 app.get('/forms_answers', (req, res) => {
   Query('SELECT * FROM forms_answers', res);
 });
 
+// Rota para ver um registro específico
 app.get('/forms_answers/:id?', (req, res) => {
   let filter = '';
   if (req.params.id) filter = ' WHERE Id=' + parseInt(req.params.id);
   Query('SELECT * FROM forms_answers' + filter, res);
 });
 
+// Rota para deletar um registro específico
 app.delete('/forms_answers/:id', (req, res) => {
   Query('DELETE FROM forms_answers WHERE Id=' + parseInt(req.params.id), res);
 });
 
+// Função para validar email
 function validateEmail(email) {
   var check = /\S+@\S+\.\S+/;
   return check.test(email);
 }
 
+// Rota para inserir um registro
 app.post('/forms_answers', (req, res) => {
   const name = req.body.name.substring(0, 150);
   const email = req.body.email.substring(0, 150);
@@ -43,6 +50,7 @@ app.post('/forms_answers', (req, res) => {
   }
 });
 
+// Rota para atualizar um registro
 app.patch('/forms_answers/:id', (req, res) => {
   const name = req.body.name.substring(0, 150);
   const email = req.body.email.substring(0, 150);
@@ -67,6 +75,7 @@ app.get('/search', (req, res) => {
 app.listen(port);
 console.log('API running on port ' + port);
 
+// Função para executar querys
 function Query(sqlQry, res) {
   const connection = mysql.createConnection(config.db);
   connection.query(sqlQry, (error, results, fields) => {
