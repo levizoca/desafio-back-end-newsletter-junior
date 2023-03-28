@@ -1,11 +1,7 @@
 const mysql = require('mysql2');
-const connection = mysql.createConnection({
-    host     : 'localhost',
-    port     :  3306,
-    user     : 'root',  // Se necessário alterar o usuário 
-    password : 'root',  // Se necessário alterar a senha
-    database : 'newsletter'
-});
+const config = require('./config');
+
+const connection = mysql.createConnection(config.db);
 
 function createTable(conn){
     const sql = `CREATE TABLE IF NOT EXISTS forms_answers(
