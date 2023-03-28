@@ -28,8 +28,7 @@ app.post('/forms_answers', (req, res) => {
     const email = req.body.email.substring(0, 150);
     const cpf = req.body.cpf.substring(0, 11);
     const phone = req.body.phone.substring(0, 11);
-    const created_at = req.body.created_at.substring(0, 11);
-    execSQLQuery(`INSERT INTO forms_answers(name, email, cpf, phone, created_at) VALUES('${name}', '${email}', '${cpf}', '${phone}', '${created_at}')`, res);
+    execSQLQuery(`INSERT INTO forms_answers(name, email, cpf, phone, created_at) VALUES('${name}', '${email}', '${cpf}', '${phone}', CURRENT_TIMESTAMP)`, res);
 });
 
 app.listen(port);
