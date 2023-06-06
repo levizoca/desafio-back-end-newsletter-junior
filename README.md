@@ -1,4 +1,4 @@
-# desafio-back-end-newsletter-junior
+# Estudo JS Docker
  
 Para rodar o projeto é necessário ter o Node e o Docker Compose instalados em sua máquina.
 <br><br>
