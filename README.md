@@ -9,7 +9,7 @@ O servidor da aplicação estará rodando em ```localhost:3000```.
 As requisições que podem ser feitas:
 
   <br>
-  Iserir dados:
+  Inserir dados:
   <img src="https://github.com/levizoca/desafio-back-end-newsletter-junior/blob/main/Imagens/register.png" width="1400" hspace="5"/><br>
   
   Pesquisar dados inserindo duas datas distintas:
